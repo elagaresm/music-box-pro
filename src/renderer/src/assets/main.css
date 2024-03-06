@@ -2,26 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: black;
+/* Importing Poppins font from assets */
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-#root {
+body {
+  background-color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+#app {
+  position: relative;
   background-color: black;
   margin: 0;
   box-sizing: border-box;
   padding: 0.75rem;
   height: 100vh;
   display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 50px 1fr;
   grid-template-areas:
     "sidebar header"
     "sidebar main";
-  gap: 15px;
+  gap: 10px;
+  z-index: 1;
 }
 
-#root > * {
-  border-radius: 10px;
+#app>* {
   background-color: #202020
+}
+
+.moving-text:hover {
+  animation: moving-text 10s linear infinite;
+}
+
+@keyframes moving-text {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
 }

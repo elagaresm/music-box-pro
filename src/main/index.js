@@ -1,7 +1,8 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { handleLoadSongs } from './utils'
 
 function createWindow() {
   // Create the browser window.
@@ -55,6 +56,8 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
+
+  ipcMain.handle('load-songs', handleLoadSongs)
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
