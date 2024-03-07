@@ -5,8 +5,9 @@ import { SiLightning as LightningIcon } from 'react-icons/si'
 import { TbWorld as WorldIcon } from 'react-icons/tb'
 import { FiSettings as SettingsIcons } from 'react-icons/fi'
 import { RxCross2 as XIcon } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ location }) => {
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
@@ -48,10 +49,13 @@ const Header = () => {
         </form>
       </nav>
 
+      {/* NOTE: Debugging purposes */}
+      <div className='text-black opacity-45 bg-outline px-2 py-0 rounded-md'>{decodeURIComponent(location.pathname)}</div>
+
       <div className="flex items-center gap-4 h-5">
         <div className="flex justify-center items-center gap-2 hover:scale-110 transition-transform ease-in-out duration-500">
           <span className="text-white text-sm">08</span>
-          <LightningIcon className="text-yellow-300 text-xl" />
+          <LightningIcon className="text-accent text-xl" />
         </div>
 
         <div className="flex items-center gap-1 hover:scale-110 transition-all duration-300">
@@ -60,7 +64,9 @@ const Header = () => {
         </div>
 
         <div>
-          <SettingsIcons className="text-white text-xl hover:scale-110 transition-all duration-300" />
+          <Link to="/">
+            <SettingsIcons className="text-white text-xl hover:scale-110 transition-all duration-300" />
+          </Link>
         </div>
       </div>
 

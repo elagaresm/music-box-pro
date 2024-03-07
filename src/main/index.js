@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -9,7 +9,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 768,
     height: 1024,
-    show: false,
+    // show: false,
     autoHideMenuBar: true,
     resizable: false,
     // frame: false,
@@ -53,11 +53,12 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  // ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
 
-  ipcMain.handle('load-songs', handleLoadSongs)
+  // ipcMain.handle('load-songs', handleLoadSongs)
+  // ipcMain.handle('join', (...args) => handleJoin(...args))
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
